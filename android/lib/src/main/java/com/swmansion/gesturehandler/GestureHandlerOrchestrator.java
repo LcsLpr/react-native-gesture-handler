@@ -1,4 +1,4 @@
-package com.swmansion.gesturehandler;
+package com.swmansion.gesturehandler.react;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;

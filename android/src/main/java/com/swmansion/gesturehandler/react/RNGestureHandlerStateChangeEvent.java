@@ -1,4 +1,4 @@
-package com.swmansion.gesturehandler;
+package com.swmansion.gesturehandler.react;
 
 import androidx.core.util.Pools;
 
@@ -6,37 +6,41 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.Event;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.swmansion.gesturehandler.GestureHandler;
+import com.swmansion.gesturehandler.react.GestureHandler;
 
 import javax.annotation.Nullable;
 
-public class RNGestureHandlerEvent extends Event<RNGestureHandlerEvent> {
+public class RNGestureHandlerStateChangeEvent extends Event<RNGestureHandlerStateChangeEvent>{
 
-  public static final String EVENT_NAME = "onGestureHandlerEvent";
+  public static final String EVENT_NAME = "onGestureHandlerStateChange";
 
   private static final int TOUCH_EVENTS_POOL_SIZE = 7; // magic
 
-  private static final Pools.SynchronizedPool<RNGestureHandlerEvent> EVENTS_POOL =
+  private static final Pools.SynchronizedPool<RNGestureHandlerStateChangeEvent> EVENTS_POOL =
           new Pools.SynchronizedPool<>(TOUCH_EVENTS_POOL_SIZE);
 
-  public static RNGestureHandlerEvent obtain(
+  public static RNGestureHandlerStateChangeEvent obtain(
           GestureHandler handler,
+          int newState,
+          int oldState,
           @Nullable RNGestureHandlerEventDataExtractor dataExtractor) {
-    RNGestureHandlerEvent event = EVENTS_POOL.acquire();
+    RNGestureHandlerStateChangeEvent event = EVENTS_POOL.acquire();
     if (event == null) {
-      event = new RNGestureHandlerEvent();
+      event = new RNGestureHandlerStateChangeEvent();
     }
-    event.init(handler, dataExtractor);
+    event.init(handler, newState, oldState, dataExtractor);
     return event;
   }
 
   private WritableMap mExtraData;
 
-  private RNGestureHandlerEvent() {
+  private RNGestureHandlerStateChangeEvent() {
   }
 
   private void init(
           GestureHandler handler,
+          int newState,
+          int oldState,
           @Nullable RNGestureHandlerEventDataExtractor dataExtractor) {
     super.init(handler.getView().getId());
     mExtraData = Arguments.createMap();
@@ -44,7 +48,8 @@ public class RNGestureHandlerEvent extends Event<RNGestureHandlerEvent> {
       dataExtractor.extractEventData(handler, mExtraData);
     }
     mExtraData.putInt("handlerTag", handler.getTag());
-    mExtraData.putInt("state", handler.getState());
+    mExtraData.putInt("state", newState);
+    mExtraData.putInt("oldState", oldState);
   }
 
   @Override

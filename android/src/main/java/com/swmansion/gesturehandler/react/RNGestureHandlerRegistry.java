@@ -1,10 +1,10 @@
-package com.swmansion.gesturehandler;
+package com.swmansion.gesturehandler.react;
 
 import android.util.SparseArray;
 import android.view.View;
 
-import com.swmansion.gesturehandler.GestureHandler;
-import com.swmansion.gesturehandler.GestureHandlerRegistry;
+import com.swmansion.gesturehandler.react.GestureHandler;
+import com.swmansion.gesturehandler.react.GestureHandlerRegistry;
 
 import java.util.ArrayList;
 

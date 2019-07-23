@@ -1,4 +1,4 @@
-package com.swmansion.gesturehandler;
+package com.swmansion.gesturehandler.react;
 
 public interface GestureHandlerInteractionController {
   boolean shouldWaitForHandlerFailure(GestureHandler handler, GestureHandler otherHandler);

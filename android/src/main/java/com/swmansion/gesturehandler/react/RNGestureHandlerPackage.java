@@ -1,4 +1,4 @@
-package com.swmansion.gesturehandler;
+package com.swmansion.gesturehandler.react;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
