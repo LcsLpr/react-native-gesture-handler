@@ -1,4 +1,4 @@
-package com.swmansion.gesturehandler.react;
+package com.swmansion.gesturehandler;
 
 public abstract class BaseGestureHandlerInteractionController
         implements GestureHandlerInteractionController {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.swmansion.gesturehandler.react.example" >
+    package="com.swmansion.gesturehandler.example" >
 
     <application
         android:allowBackup="true"

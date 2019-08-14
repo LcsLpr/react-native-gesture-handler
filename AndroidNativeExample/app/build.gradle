@@ -5,7 +5,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "com.swmansion.gesturehandler.react.example"
+        applicationId "com.swmansion.gesturehandler.example"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
